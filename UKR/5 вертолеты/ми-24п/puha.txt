@@ -1,0 +1,365 @@
+
+[core]
+tags:ship,pushka,nigga
+name: 2A42Mi
+displayText: 2А42
+displayDescription: Пушка 30мм
+class: CustomUnitMetadata
+price: 2
+maxHp: 300
+mass: 300000
+armour:100
+showInEditor: false
+
+techLevel: 1
+buildSpeed: 0.0012
+#availableInDemo: true
+
+radius: 5
+displayRadius: 5
+
+energyMax: 10
+energyRegen: 0.01
+energyNeedsToRechargeToFull: true
+
+
+isBio: false
+softCollisionOnAll: 0
+
+fogOfWarSightRange:10
+showOnMinimap: false
+
+[graphics]
+showHealthBar:false
+showEnergyBar:false
+icon_zoomed_out_neverShow:true
+total_frames: 1
+imageScale: 1
+
+image:        null.png
+image_wreak:  NONE
+image_turret: turretMi28.png
+
+image_shadow: AUTO
+shadowOffsetX:1
+shadowOffsetY:1
+scaleTurretImagesTo:13
+dustEffect: false
+
+[attack]
+canAttack: true
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+turretSize: 20
+turretTurnSpeed: 1
+maxAttackRange: 550
+shootDelay: 0.10s
+
+[movement]
+movementType: AIR
+moveSpeed: 0.0
+moveAccelerationSpeed: 0.07
+moveDecelerationSpeed: 0.17
+
+maxTurnSpeed: 2.5
+turnAcceleration: 0.25
+
+moveSlidingMode :false
+moveIgnoringBody:false
+
+
+[turret_2]
+#turret
+x: 0
+y: 0
+canShoot:false
+limitingAngle:130
+
+[turret_1]
+#2А72
+x: 0
+y: 23
+projectile: 30APDS
+canAttackCondition:if not self.isMoving()
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+turnSpeedAcceleration: 1
+attachedTo:2
+slave:true
+shoot_sound:ROOT:/ogg/2A42.OGG
+shoot_sound_vol:0.7
+image:null.png
+canShoot: true
+invisible:false
+warmup:3
+size: 1
+turnSpeed: 0.5
+
+shoot_flame:CUSTOM:Flame,CUSTOM:porohgaz*2,CUSTOM:porohgaz1*4,CUSTOM:shell
+shoot_light:#FFEECCCC
+delay:0.10s
+limitingRange:550
+limitingAngle:130
+limitingMinRange:75
+
+[effect_Flame]
+life:50
+image:ROOT:/PNG/shoot_flame.png
+total_frames:5
+animateFrameSpeed:0.5
+attachedToUnit:true
+animateFrameStart:0
+animateFrameEnd:4
+drawUnderUnits:true
+yOffsetRelative: 4
+
+[effect_porohgaz]
+life:95
+image:ROOT:/PNG/porohgaz.png
+
+attachedToUnit:false
+
+xOffsetRelativeRandom:7
+yOffsetRelative: 0
+xOffsetAbsoluteRandom:9
+yOffsetAbsolute:10
+
+ySpeedRelative:-0.3
+xSpeedRelativeRandom:0.35
+dirOffsetRandom:360
+dirSpeed:0.2
+
+atmospheric:true
+scaleTo:0.4
+drawUnderUnits:true
+scaleFrom:0.8
+
+[effect_porohgaz1]
+life:95
+image:ROOT:/PNG/porohgaz1.png
+
+attachedToUnit:false
+
+xOffsetRelativeRandom:6
+yOffsetRelative: 10
+xOffsetAbsoluteRandom:8
+yOffsetAbsolute:10
+
+ySpeedRelative:-0.3
+xSpeedRelativeRandom:0.35
+dirOffsetRandom:360
+dirSpeed:0.2
+
+atmospheric:true
+scaleTo:0.4
+scaleFrom:0.8
+drawUnderUnits:true
+
+
+
+[effect_shell]
+xOffsetRelative:-3
+yOffsetRelative:-7
+attachedToUnit: false
+life: 250
+physics: true
+ySpeedRelative: 0.5
+xSpeedRelativeRandom: 0.3
+ySpeedRelativeRandom: 0.3
+hSpeed:1.2
+image:ROOT:/PNG/30_shell.png
+priority: low
+drawUnderUnits:true
+scaleFrom:0.2
+scaleTo: 0.15
+dirSpeedRandom:20
+
+[hiddenAction_start]
+autoTriggerOnEvent: created
+addResources:setFlag=1
+
+[projectile_30APDS]
+#bushmaster
+tags: APDS
+directDamage: 1
+life: 100
+speed: 10
+frame: 1
+
+drawSize: 0.5
+armourIgnoreAmount:150
+targetGround:true
+targetGroundSpread: 3
+areaRadius: 8
+areaDamage:420
+#explodeEffect:CUSTOM:lostShot
+image:ROOT:/PNG/30_APDS.png
+lightColor: #ffec00
+
+[turret_Trace1]
+x: 0
+y: 30
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+projectile:30HEI
+shoot_light:#88FF00FF
+delay: 0.35s
+attachedTo:2
+slave:true
+limitingMinRange:80
+image:null.png
+
+[projectile_30HEI]
+tags: HEI
+directDamage: 1
+life: 100
+speed: 7
+areaDamage:200
+areaRadius: 35
+areaExpandTime: 0
+friendlyFire: true
+targetGround: true
+targetGroundSpread:5
+image:ROOT:/PNG/30_HEI.png
+drawSize: 0.6
+buildingDamageMultiplier: 2
+
+mutator1_ifUnitWithTags: ARMOR
+mutator1_directDamageMultiplier: 0
+mutator1_areaDamageMultiplier: 0
+explodeEffect:CUSTOM:projectileGroundSmoke*2,CUSTOM:projectileWaterSplash*3
+trailEffect: CUSTOM:trail, CUSTOM:zelen
+trailEffectRate:5
+lightSize:1
+lightColor:#8BD17BFF
+
+[effect_zelen]
+priority:critical
+total_frames:3
+animateFrameStart:0
+animateFrameEnd:2
+animateFrameSpeed:0.75
+image:tracer.png
+life: 1000
+scaleFrom: 0.4
+scaleTo: 0.4
+alpha: 0.6
+attachedToUnit:true
+
+animateFramePingPong:true
+yOffsetRelative:-25
+
+
+[effect_trail]
+stripIndex: effects
+frameIndex: 0
+
+
+life: 50
+image:ROOT:/PNG/Infantry/Trail.png
+color: #CCCCDD
+
+priority: high
+
+attachedToUnit: false
+atmospheric: true
+#physics: false
+#physicsGravity: 0
+
+#xOffsetRelative: 20.0
+yOffsetRelative: -20
+#xSpeedRelative: 0
+#ySpeedRelative: 0
+
+scaleFrom: 1.3
+scaleTo: 1.3
+
+alpha: 1.3
+
+[effect_projectileGroundSmoke]
+priority:veryhigh
+
+stripIndex: effects
+frameIndex: 0
+
+createWhenOverLiquid: false
+life: 240
+fadeOut: true
+attachedToUnit: false
+color: #6D5448
+fadeInTime:5
+scaleFrom: 1
+scaleTo: 3
+alpha: 1.25
+drawUnderUnits:false
+hSpeed:0.2
+hOffsetRandom:0.15
+
+
+dirOffsetRandom:180
+
+shadow:true
+xOffsetRelativeRandom: 24
+yOffsetRelativeRandom: 24
+xSpeedAbsoluteRandom:0.2
+ySpeedAbsoluteRandom:0.2
+atmospheric: true
+
+[effect_projectileWaterSplash]
+priority:high
+
+image:ROOT:/PNG/sub_bubbles.png
+createWhenOverLand: false
+life: 120
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+fadeInTime:5
+scaleFrom: 1
+scaleTo: 2
+alpha: 1
+drawUnderUnits:false
+hSpeed: 0.75
+hOffsetRandom: 0.75
+
+
+dirOffsetRandom:180
+
+physics: true
+physicsGravity: 0.1
+xOffsetRelativeRandom: 16
+yOffsetRelativeRandom: 16
+xSpeedAbsoluteRandom:0.2
+ySpeedAbsoluteRandom:0.2
+atmospheric: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

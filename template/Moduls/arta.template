@@ -1,0 +1,78 @@
+[core]
+maxTransportingUnits:1
+tags: fx
+class: CustomUnitMetadata
+transportUnitsRequireTag:TANKIST
+isBio: true
+isBug: false
+#isUnrepairableUnit: true
+selfRegenRate: 0.01
+softCollisionOnAll: 3
+hideScorchMark: true
+stayNeutral:true
+transportUnitsKillOnDeath:false
+whileNeutralTransportAnyTeam:true
+whileNeutralConvertToTransportedTeam:true
+transportUnitsCanUnloadUnits:if not self.isControlledByAi()
+
+
+[action_RandomCrew]
+autoTrigger:if self.hp(lessThan=180)
+switchToNeutralTeam:true
+isVisible:false
+setUnitStats:maxHP-=500,armour-=100,moveSpeed-=0.4,maxTurnSpeed-=0.4,hp+=200
+clearAllWaypoints:true
+
+
+[hiddenAction_vehicleEmpty]
+autoTrigger:if self.transportingCount() == 0
+clearActiveWaypoint:true
+switchToNeutralTeam:true
+
+[hiddenAction_crewKilled25]
+autoTrigger:if self.hasTakenDamage(withinSeconds=1) and (self.hp() <= (self.maxHp())/1.75)  and (self.hp() >= (self.maxHp())/4) and (rnd(0,1) > 0.75)
+deleteNumUnitsFromTransport:1
+
+[hiddenAction_crewKilled50]
+autoTrigger:if self.hasTakenDamage(withinSeconds=1) and (self.hp() < (self.maxHp())/4) and (rnd(0,1) > 0.5)
+deleteNumUnitsFromTransport:2
+
+
+[hiddenAction_autoRepair]
+autoTrigger:if not self.isMoving() and not self.isAttacking() and self.transportingCount() > 0
+setUnitStats:selfRegenRate=0.01
+
+[hiddenAction_stopAutoRepair]
+autoTrigger:if self.isMoving() or self.isAttacking() or self.transportingCount() == 0
+setUnitStats:selfRegenRate=0
+
+
+
+[attack]
+canAttack: true
+canAttackLandUnits: if self.transportingCount(greaterThan=1)
+
+
+
+[hiddenAction_crewKilled111ывавап11]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount(lessThan=0)
+deleteNumUnitsFromTransport:5
+
+
+
+[hiddenAction_crewKilled111112312341]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount(lessThan=0)
+deleteNumUnitsFromTransport:4
+
+
+[hiddenAction_crewKilled11111]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount(lessThan=0)
+deleteNumUnitsFromTransport:3
+
+[hiddenAction_crewKilled111111]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount(lessThan=0)
+deleteNumUnitsFromTransport:2
+
+[hiddenAction_crewKilled11111111]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount(lessThan=0)
+deleteNumUnitsFromTransport:1

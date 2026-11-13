@@ -1,0 +1,4 @@
+name=UGV Test
+version=1.0
+description=Basic UGV unit mod with no weapon.
+minVersion=1.15

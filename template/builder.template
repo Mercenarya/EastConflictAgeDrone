@@ -1,0 +1,100 @@
+
+[core]
+tags: fx,infantry
+class: CustomUnitMetadata
+isBio: true
+isBug: false
+isUnrepairableUnit: true
+selfRegenRate: 0.01
+softCollisionOnAll: 3
+hideScorchMark: true
+armourMinDamageToKeep:0
+
+[hiddenAction_coversmall]
+autoTrigger: if numberOfUnitsInTeam(withTag='defend',withinRange=5,greaterThan=0) and self.resource(type='armour',lessThan=1) and not self.isAttacking()
+setUnitStats:armour+=800
+resourceAmount: armour
+resourceAmount_setValue:1
+
+
+[hiddenAction_cover]
+autoTrigger: if numberOfUnitsInTeam(withTag='dot',withinRange=5,greaterThan=0) and self.resource(type='armour',lessThan=1) and not self.isAttacking()
+setUnitStats:armour+=2000
+resourceAmount: armour
+resourceAmount_setValue:1
+
+
+[hiddenAction_coversmallout]
+autoTrigger: if not numberOfUnitsInTeam(withTag='defend',withinRange=5,greaterThan=0)  and self.resource(type='armour',greaterThan=0) or self.isAttacking()  
+resetUnitStats:true
+resourceAmount: armour
+resourceAmount_setValue:0
+
+[hiddenAction_coverout]
+autoTrigger: if not numberOfUnitsInTeam(withTag='dot',withinRange=5,greaterThan=0)  and self.resource(type='armour',greaterThan=0) or self.isAttacking()
+resetUnitStats:true
+resourceAmount: armour
+resourceAmount_setValue:0
+
+[resource_armour]
+displayName: armour
+displayColor:#6C408CFF
+hidden:true
+
+
+
+
+[graphics]
+repairEffectAtTarget:CUSTOM:repair, CUSTOM:Gaika, CUSTOM:smoke, CUSTOM:Bolt
+repairEffectRate:50
+
+[effect_repair]
+	life:100
+	image:ROOT:/PNG/Pochinka.png
+	ySpeedRelative:0
+	xSpeedRelative:0
+	drawUnderUnits:false			
+	hSpeed: 0.35
+	scaleFrom:0.3
+	scaleTo:0.4
+ hOffset:10
+
+[effect_Gaika]
+	life:150
+	image:ROOT:/PNG/Gaika.png
+      physics:true
+      alsoEmitEffects:CUSTOM:Gaika
+  	ySpeedRelativeRandom:1.5
+	xSpeedRelativeRandom:1.5
+      hOffset: 7	
+      hSpeed: 0.5
+      dirOffsetRandom: 69
+	scaleFrom:0.15
+	scaleTo:0.15
+
+[effect_smoke]
+      life:100
+      scaleFrom:1.5
+      color:#808080
+	scaleTo:1.5
+
+[effect_Bolt]
+	life:150
+	image:ROOT:/PNG/Bolt.png
+      physics:true
+      alsoEmitEffects:CUSTOM:Bolt
+  	ySpeedRelativeRandom:1.5
+	xSpeedRelativeRandom:1.5
+      hOffset: 7	
+      hSpeed: 0.5
+      dirOffsetRandom: 69
+	scaleFrom:0.2
+	scaleTo:0.2
+
+
+
+
+
+
+
+

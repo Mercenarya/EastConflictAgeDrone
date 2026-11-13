@@ -1,0 +1,7 @@
+[core]
+class: CustomUnitMetadata
+price: 0
+techLevel: 1
+radius: 20
+isBuilding: false
+showInEditor: false

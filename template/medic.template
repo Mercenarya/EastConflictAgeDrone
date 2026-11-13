@@ -1,0 +1,153 @@
+
+[core]
+tags: fx,infantry
+class: CustomUnitMetadata
+isBio: true
+isBug: false
+isUnrepairableUnit: true
+selfRegenRate: 0.01
+softCollisionOnAll: 3
+hideScorchMark: true
+armourMinDamageToKeep:0
+canBuild_8_name:okop,SKord
+
+
+[hiddenAction_tag]
+autoTriggerOnEvent: created
+temporarilyAddTags: infantry
+
+[hiddenAction_speed]
+autoTriggerOnEvent: created
+setUnitStats:moveSpeed=0.69
+
+
+
+
+
+
+[hiddenAction_coversmall]
+autoTrigger: if numberOfUnitsInTeam(withTag='defend',withinRange=5,greaterThan=0) and self.resource(type='armour',lessThan=1) and not self.isAttacking()
+setUnitStats:armour+=800
+resourceAmount: armour
+resourceAmount_setValue:1
+
+
+[hiddenAction_cover]
+autoTrigger: if numberOfUnitsInTeam(withTag='dot',withinRange=5,greaterThan=0) and self.resource(type='armour',lessThan=1) and not self.isAttacking()
+setUnitStats:armour+=2000
+resourceAmount: armour
+resourceAmount_setValue:1
+
+
+[hiddenAction_coversmallout]
+autoTrigger: if not numberOfUnitsInTeam(withTag='defend',withinRange=5,greaterThan=0)  and self.resource(type='armour',greaterThan=0) or self.isAttacking()  
+resetUnitStats:true
+resourceAmount: armour
+resourceAmount_setValue:0
+
+[hiddenAction_coverout]
+autoTrigger: if not numberOfUnitsInTeam(withTag='dot',withinRange=5,greaterThan=0)  and self.resource(type='armour',greaterThan=0) or self.isAttacking()
+resetUnitStats:true
+resourceAmount: armour
+resourceAmount_setValue:0
+
+[hiddenAction_stop]
+autoTrigger:if attacking.tags(includes='infantry')
+
+clearAllWaypoints:true
+
+[hiddenAction_stop14]
+autoTrigger:if self.hp() < self.maxHp()/2
+setUnitStats:moveSpeed=0.45
+
+
+[hiddenAction_stop1]
+autoTrigger:if self.hp() < self.maxHp()/2 and self.isAttacking()
+
+addWaypoint_type:move
+addWaypoint_prepend:true
+addWaypoint_position_relativeOffsetFromSelf:0, -100
+
+[hiddenAction_ranenie]
+autoTrigger:if self.hp() < self.maxHp()/4 
+setUnitStats:moveSpeed=0.30,maxAttackRange=1
+
+
+
+[action_silnoranen]
+text_ru: Сильное ранение
+description_ru: Боец сильно ранен \n  Он не может атаковать и передвигается медленее \n Вылечи его
+isVisible:if self.hp() < self.maxHp()/4 
+iconImage:ROOT:/PNG/KrestBig.png
+buildSpeed: 0s
+pos: 0.1
+
+[action_ranen]
+text_ru: Ранение
+description_ru: Боец  ранен \n  Он передвигается медленее \n Вылечи его
+isVisible:if self.hp() < self.maxHp()/2 and not (self.hp() < self.maxHp()/4)
+
+iconImage:ROOT:/PNG/Krest.png
+buildSpeed: 0s
+pos: 0.1
+
+[hiddenAction_net_raneniam]
+autoTrigger:if self.hp() == self.maxHp()
+resetUnitStats:true
+
+
+
+[resource_armour]
+displayName: armour
+displayColor:#6C408CFF
+hidden:true
+
+
+
+
+[graphics]
+repairEffectAtTarget:CUSTOM:Heal
+repairEffect:CUSTOM:bandage
+repairEffectRate:40
+
+
+[effect_Heal]
+	life:100
+	image:ROOT:/PNG/KrestBig.png
+	ySpeedRelative:0
+	xSpeedRelative:0
+	drawUnderUnits:false			
+	hSpeed: 0.35
+	scaleFrom:0.3
+	scaleTo:0.4
+ hOffset:10
+
+
+
+ 
+
+[effect_bandage]
+physics: true
+attachedToUnit: false
+life: 170
+dirSpeed:0.05
+scaleFrom:0.3
+scaleTo:0.4
+hSpeed: 0.7
+yOffsetRelative: -2
+#ySpeedAbsolute:1
+ySpeedRelative:2.1
+#dirOffsetRandom:360
+image: ROOT:/PNG/Bandage.png
+priority: high
+alpha:1
+fadeInTime:5
+
+
+
+
+
+
+
+
+

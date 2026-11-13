@@ -1,0 +1,157 @@
+
+[core]
+tags: fx,AirFHT
+class: CustomUnitMetadata
+isBio: true
+isBug: false
+#isUnrepairableUnit: true
+selfRegenRate: 0.01
+softCollisionOnAll: 3
+hideScorchMark: true
+
+[action_trigger_0_energy]
+isVisible:false
+autoTrigger: if self.energy(lessThan=500)
+clearAllWaypoints:true
+addWaypoint_prepend:true
+addWaypoint_type: loadInto
+addWaypoint_target_nearestUnit_tagged: "aero"
+addWaypoint_target_nearestUnit_team:ally
+
+
+
+#----------------!!!------------------#
+
+
+[action_showFHTCount]
+#infoOnly: true
+addResources: FHT=1
+price:  FHT=1
+text: ЛТЦ/ДО
+displayType: none
+buildSpeed: 0s
+pos: 0.1
+displayRemainingStockpile: true
+highPriorityQueue: true
+isActive:false
+
+[action_trigger_FHT]
+autoTrigger: if self.resource(type='EnemyIsBack', equalTo=0)
+resourceAmount: EnemyIsBack
+resourceAmount_setValue:1
+fireTurretXAtGround:FHT
+fireTurretXAtGround_withProjectile:FalseHeatTarget
+fireTurretXAtGround_withOffset:0,0
+fireTurretXAtGround_count:2
+isVisible:false
+buildSpeed: 0.5s
+pos: 0.1
+
+
+
+[turret_FHT]
+x:0
+y:-90
+canShoot:false
+#interceptProjectiles_withTags:tow
+projectile:FalseHeatTarget
+shoot_flame:none
+image:ROOT:/PNG/null.png
+attachedTo:Sensor
+
+[projectile_FalseHeatTarget]
+image:ROOT:/PNG/null.png
+life:500
+speed:10
+directDamage:500
+spawnUnit:falseTargetAirR,falseTargetAirL
+explodeEffect:none
+
+[resource_EnemyIsBack]
+displayName: FHTwork
+hidden: true
+
+[hiddenAction_start]
+autoTriggerOnEvent: created
+addResources: FHT=60,EnemyIsBack=1
+
+
+[effect_teplo] 
+life: 2000
+image: ROOT:/PNG/teplo.png 
+color: #CCCCDD 
+
+total_frames: 12
+
+priority: verylow 
+ 
+attachedToUnit: false
+atmospheric: true 
+physics: true
+physicsGravity: 0 
+ 
+xOffsetRelative: 0
+yOffsetRelative: -50
+xSpeedRelative: 0
+ySpeedRelative: 0 
+
+scaleFrom: 1.5
+scaleTo: 1.5
+alpha: 1
+ 
+animateFrameStart:0
+animateFrameEnd:11
+animateFrameSpeed:0.2
+
+
+
+
+
+[turret_Sensor]
+#anti-rocket
+x: 0
+y: 10
+
+invisible: true
+
+canAttackFlyingUnits: false
+canAttackLandUnits:   false
+interceptProjectiles_withTags: missile
+interceptProjectiles_andUnderDistance: 700
+projectile: Sensor
+turnSpeed: 40
+
+resourceUsage: FHT=2,EnemyIsBack=1
+shoot_flame: CUSTOM:teplo
+
+
+[projectile_Sensor]
+#anti-rocket
+directDamage: 1
+
+life: 1
+targetSpeed: 1
+targetSpeedAcceleration:0.05
+
+frame: 1
+areaExpandTime:75
+deflectionPower:-1
+lightCastOnGround: true
+
+
+[action_trigger_Locked]
+autoTrigger: if self.numberOfUnitsInEnemyTeam(withTag='targetLock',greaterThan=0,withinRange=1000)
+temporarilyAddTags: targetLockedFire
+isVisible:false
+buildSpeed: 0.1s
+
+
+[action_trigger_unLocked]
+autoTrigger: if self.numberOfUnitsInEnemyTeam(withTag='targetLock',lessThan=1,withinRange=700)
+temporarilyRemoveTags: targetLockedFire
+isVisible:false
+buildSpeed: 0.1s
+
+
+
+

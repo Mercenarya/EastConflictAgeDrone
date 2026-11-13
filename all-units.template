@@ -1,0 +1,939 @@
+[core]
+strictLevel: 1
+
+[global_resource_Fight]
+displayName: Fight
+displayColor:#3C9F9CFF
+
+[global_resource_Supply]
+displayName: Supply
+displayColor:#e08114
+
+[global_resource_Oil]
+displayName: Oil
+displayColor:#6C408CFF
+
+[global_resource_Manpower]
+displayName: Manpower
+displayColor:#bb0a1e
+
+[resource_local_Manpower]
+displayName: Manpower
+displayColor:#bb0a1e
+equivalentGlobalResourceForAI: Manpower
+
+
+[resource_local_Oil]
+displayName: Oil
+displayColor:#6C408CFF
+equivalentGlobalResourceForAI: Oil
+
+[global_resource_Ammo]
+#global resource, shared with all units on team
+displayName: Ammo
+displayColor:#ffe138 
+
+[resource_localAmmo]
+displayName: Ammo
+displayColor:#ffe138
+equivalentGlobalResourceForAI: Ammo
+
+[resource_localflares]
+displayName: Flares
+displayColor:#6C408CFF
+hidden:true
+
+[resource_localchaff]
+displayName: Chaff
+displayColor:#6C408CFF
+hidden:true
+
+[global_resource_CapturePoints]
+displayName: CapturePoints
+displayColor:#3C9F9CFF
+
+[hiddenAction_overWater]
+autoTrigger: if not self.tags(includes='overWater') and self.isOverwater()
+temporarilyAddTags: overWater
+
+[hiddenAction_notOverWater]
+autoTrigger: if self.tags(includes='overWater') and not self.isOverwater()
+temporarilyRemoveTags: overWater
+
+
+[resource_5.56NATO]
+displayName: 5.56(NATO)
+hidden: true
+
+[resource_7.62NATO]
+displayName: 7.62(NATO)
+hidden: true
+
+[resource_5.56RF]
+displayName: 12.7(Rus)
+hidden: true
+
+[resource_7.62LPS]
+displayName: 7.62*54
+hidden: true
+
+[resource_12.7NATO]
+displayName: 12.7(NATO)
+hidden: true
+
+[resource_12.7RF]
+displayName: 12.7(Rus)
+hidden: true
+
+
+[resource_14.5HE]
+displayName: kpvt
+hidden: true
+
+[resource_14.5BP]
+displayName: kpvt
+hidden: true
+
+
+
+[resource_20APDS]
+displayName: APDS-T
+hidden: true
+
+[resource_20HEI]
+displayName: HEI-T
+hidden: true
+
+[resource_20SAPHEI]
+displayName: SAPHEI-T
+hidden: true
+
+[resource_23BP]
+displayName: AP-T
+hidden: true
+
+[resource_23HE]
+displayName: HEI-T
+hidden: true
+
+[resource_25APDS]
+displayName: APDS-T
+hidden: true
+
+[resource_25HEI]
+displayName: HEI-T
+hidden: true
+
+[resource_25SAPHEI]
+displayName: SAPHEI-T
+hidden: true
+
+
+[resource_30APDS]
+displayName: APDS
+hidden: true
+
+[resource_30HEI]
+displayName: HEI-T
+hidden: true
+
+[resource_30HE]
+displayName: HE-T
+hidden: true
+
+
+[resource_30britBP]
+displayName: BP-T
+hidden: true
+
+[resource_30britHE]
+displayName: HE-T
+hidden: true
+
+
+[resource_30gerAPFSDS]
+displayName: APDS
+hidden: true
+
+[resource_30gerHEI]
+displayName: HEI-T
+hidden: true
+
+[resource_30gerSAPHEI]
+displayName: HE-T
+hidden: true
+
+[resource_35APDS]
+displayName: APDS
+hidden: true
+
+[resource_35HEI]
+displayName: HEI-T
+hidden: true
+
+[resource_35HE]
+displayName: HE-T
+hidden: true
+
+
+[resource_40APDS]
+displayName: APDS-T
+hidden: true
+
+[resource_40HEI]
+displayName: HEI-T
+hidden: true
+
+
+
+[resource_30vogSHE]
+displayName:30vog
+hidden:true
+
+[resource_30vogHE]
+displayName:30vog
+hidden:true
+
+[resource_40HEAT]
+displayName:40Heat
+hidden:true
+
+[resource_40HE]
+displayName:40HE
+hidden:true
+
+[resource_40SMK]
+displayName:40SMK
+hidden:true
+
+
+[resource_73HE]
+displayName: 73HE-T
+hidden: true
+
+[resource_73HEAT]
+displayName: 73HEAT
+hidden: true
+
+[resource_75APFSDS]
+displayName: 75AP
+hidden: true
+
+[resource_75HE]
+displayName: 75HE-T
+hidden: true
+
+[resource_75HEAT]
+displayName: 75HEAT
+hidden: true
+
+
+
+
+
+
+[resource_Hydra]
+displayName:Hydra
+hidden:true
+
+[resource_100HE]
+displayName: 100HE
+hidden: true
+
+[resource_9M117]
+displayName: 100_HEAT_R
+hidden: true
+
+[resource_100rapiraAPFSDS]
+displayName: 100AP
+hidden: true
+
+[resource_100rapiraHEAT]
+displayName: 100HEAT
+hidden: true
+
+[resource_100rapiraHE]
+displayName: 100HE
+hidden: true
+
+
+
+[resource_105APFSDS]
+displayName: 105AP
+hidden: true
+
+[resource_105HE]
+displayName: 105HE-T
+hidden: true
+
+[resource_105HEAT]
+displayName: 105HEAT
+hidden: true
+
+[resource_105WP]
+displayName: 105WP
+hidden: true
+
+
+
+[resource_120APFSDSA1]
+displayName: 120AP1
+hidden: true
+
+[resource_120APFSDSA2]
+displayName: 120AP2
+hidden: true
+
+[resource_120APFSDSA3]
+displayName: 120AP3
+hidden: true
+
+[resource_120HEORT]
+displayName: 120HE-OR-T
+hidden: true
+
+[resource_120HEAT]
+displayName: 120HEAT
+hidden: true
+
+[resource_120HEATMP]
+displayName: 120HEAT-MP
+hidden: true
+
+
+[resource_120MPHE]
+displayName: 120MP-HE
+hidden: true
+
+[resource_120DM43]
+displayName: 120APDS
+hidden: true
+
+[resource_120DM53]
+displayName: 120APDS
+hidden: true
+
+[resource_120DM12A1]
+displayName: 120MP-HE
+hidden: true
+
+[resource_120DM11]
+displayName: 120HE
+hidden: true
+
+[resource_120DM11A1]
+displayName: 120MP-HE
+hidden: true
+
+
+[resource_120APFSDS1EU]
+displayName: 120AP3
+hidden: true
+
+[resource_120HESHEU]
+displayName: 120HESH
+hidden: true
+
+
+
+[resource_125Vant]
+displayName: 125AP1
+hidden: true
+
+[resource_125Lekalo]
+displayName: 125AP2
+hidden: true
+
+[resource_125Svinec]
+displayName: 125AP3
+hidden: true
+
+[resource_125HEAT]
+displayName: 125HEAT
+hidden: true
+
+[resource_125MPHEAT]
+displayName: 125MPHEAT
+hidden: true
+
+[resource_125HE]
+displayName: 125HE
+hidden: true
+
+[resource_125OHE]
+displayName: 125O-HE
+hidden: true
+
+[resource_125Invar]
+displayName: 125HEAT-R
+hidden: true
+
+[resource_125InvarM]
+displayName: 125HEAT-R
+hidden: true
+
+[resource_125Kobra]
+displayName: 125HEAT-R
+hidden: true
+
+
+
+[resource_9M311]
+displayName: 2C6
+hidden: true
+
+
+
+[resource_9M335]
+displayName: 96K6
+hidden: true
+
+
+[resource_Javelin]
+displayName: javelin
+hidden: true
+
+[resource_130Sturm9M120]
+displayName: 130Tandem
+hidden: true
+
+[resource_9M133]
+displayName: KornetTandem
+hidden: true
+
+[resource_9M1333]
+displayName: 9M133
+hidden: true
+
+
+
+[resource_9M111]
+displayName: Fagot
+hidden: true
+
+
+[resource_9M111M]
+displayName: Udar
+hidden: true
+
+
+[resource_9M113M]
+displayName:Konkurs
+hidden: true
+
+[resource_127TOW]
+displayName: 152TOW
+hidden: true
+
+[resource_152TOW2]
+displayName: 152TOW2
+hidden: true
+
+[resource_152TOW2a]
+displayName: 152TOW2a
+hidden: true
+
+[resource_152TOW2b]
+displayName: 152TOW2b
+hidden: true
+
+[resource_152ITOW]
+displayName: 152ITOW
+hidden: true
+
+
+[resource_Milan]
+displayName: Milan
+hidden: true
+
+
+[resource_MMP]
+displayName: MMP
+hidden: true
+
+[resource_170Spike]
+displayName: 170Spike
+hidden: true
+
+[resource_AAGM9M333]
+displayName: AAGM
+hidden: true
+
+
+[resource_AAGMStinger]
+displayName: AAGM
+hidden: true
+
+[resource_AGM114]
+displayName: AGM114
+hidden: true
+
+
+[resource_MIM146]
+displayName: AAM
+hidden: true
+
+
+[resource_81mortarHE]
+displayName: 120mortarHE
+hidden: true
+
+[resource_120mortarHE]
+displayName: 120mortarHE
+hidden: true
+
+[resource_120nonaHE]
+displayName: 120mortarHE
+hidden: true
+
+[resource_120nonaHEI]
+displayName: 120mortarHEI
+hidden: true
+
+
+[resource_110larsHE]
+displayName: 110HE
+hidden: true
+
+[resource_110larsHEAT]
+displayName: 110HEAT
+hidden: true
+
+[resource_122rfHE]
+displayName: 122HE
+hidden: true
+
+[resource_122rfHEAT]
+displayName: 122HEAT
+hidden: true
+
+[resource_122gradHE]
+displayName: 122HE
+hidden: true
+
+[resource_122gradHEAT]
+displayName: 122HEAT
+hidden: true
+
+[resource_122gradMINES]
+displayName: 122Mine
+hidden: true
+
+[resource_122gradMPHEAT]
+displayName: 122MPHEAT
+hidden: true
+
+[resource_152HEAT]
+displayName: 152CassetteHEAT
+hidden: true
+
+[resource_152HE]
+displayName: 152HE
+hidden: true
+
+[resource_152Krasnopol]
+displayName: 152PointHE
+hidden: true
+
+
+[resource_155MPHEAT]
+displayName: 155CassetteHEAT
+hidden: true
+
+[resource_155HE]
+displayName: 155HE
+hidden: true
+
+[resource_155Excalibur]
+displayName: 155PointHE
+hidden: true
+
+
+[resource_155HEAT_chi]
+displayName: 155CassetteHEAT
+hidden: true
+
+[resource_155HE_chi]
+displayName: 155HE
+hidden: true
+
+
+
+[resource_220HEI]
+displayName: 220HEI
+hidden: true
+
+
+[resource_9M27F]
+displayName: 9M27F
+hidden: true
+
+
+[resource_9M27K]
+displayName: 9M27K
+hidden: true
+
+[resource_9M27K2]
+displayName: 9M27K2
+hidden: true
+
+
+[resource_227MINE]
+displayName: 227Mine
+hidden: true
+
+[resource_227MPHEAT]
+displayName: 227MPHEAT
+hidden: true
+
+[resource_227HE]
+displayName: 227HE
+hidden: true
+
+[resource_610HE]
+displayName: MGM140
+hidden: true
+
+[resource_610HEB]
+displayName: MGM140B
+hidden: true
+
+
+
+[resource_9m723HE]
+displayName: 9m723
+hidden: true
+
+[resource_9М79HE]
+displayName: 9М79HE
+hidden: true
+
+
+[resource_PAC3]
+displayName: PAC3
+hidden: true
+
+[resource_PAC2]
+displayName: PAC2
+hidden: true
+
+[resource_HeatShield]
+displayName: antiHeat armor
+hidden: true
+
+[resource_time]
+displayName: second
+hidden: true
+
+
+[resource_fuel]
+displayName: fuel
+hidden: true
+
+[resource_KAZ]
+displayName: KAZ
+hidden: true
+
+[resource_FHT]
+displayName: FHT
+hidden: true
+
+
+
+[resource_ty141]
+displayName: ty141
+hidden: true
+
+[resource_grob]
+displayName: M113
+hidden: true
+
+
+
+
+[resource_PAC3]
+displayName: PAC3
+hidden: true
+
+
+[resource_9M133]
+displayName: 9M133
+hidden: true
+
+[resource_rpgof]
+displayName: rpgof
+hidden: true
+
+
+
+
+[resource_rshg1]
+displayName: rshg1
+hidden: true
+
+
+
+
+
+
+[resource_random]
+displayName: random
+hidden: true
+
+
+
+
+
+
+
+
+
+[resource_M1M]
+displayName: M1A1M
+hidden: true
+
+
+
+[resource_9М96ЕЕ2]
+displayName:9М96Е/Е2
+hidden: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[resource_s5]
+displayName: s5
+hidden: true
+
+
+
+[resource_spawnsource]
+displayName: spawnsource
+hidden: true
+
+
+
+
+[resource_lendliz]
+displayName: lendliz
+hidden: true
+
+[resource_volnorez]
+displayName: volnorez
+hidden: true
+
+
+
+
+
+[resource_122HE]
+displayName: 122HE
+hidden: true
+
+[resource_122HEAT]
+displayName: 122HEAT
+hidden: true
+
+
+
+
+[resource_grayvoron]
+displayName: grayvoron
+hidden: true
+
+
+
+[resource_orexovo]
+displayName: orexovo
+hidden: true
+
+
+
+[resource_ingysh]
+displayName: ingysh
+hidden: true
+
+
+[resource_volochek]
+displayName: volochek
+hidden: true
+
+
+
+
+[global_resource_buanchiks]
+displayName: buanchiks
+hidden: true
+
+
+
+[global_resource_bdk775]
+displayName: bdk775
+hidden: true
+
+
+
+
+
+
+[resource_rgd_mavic]
+displayName: rgd_mavic
+hidden: true
+
+
+
+
+
+[resource_djmavic]
+displayName: djmavic
+hidden: true
+
+
+[resource_zala]
+displayName: zala
+hidden: true
+
+
+
+
+
+[resource_bvm1]
+displayName: bvm1
+hidden: true
+
+
+
+
+[resource_bvm2]
+displayName: bvm2
+hidden: true
+
+[resource_mangal14]
+displayName: mangal
+hidden: true
+
+[resource_dz14]
+displayName: relict
+hidden: true
+
+[resource_oniks]
+displayName: 3M55
+hidden: true
+
+[resource_t64bv1]
+displayName: t64bv1
+hidden: true
+
+[resource_675-сб3КДЗ]
+displayName:675-сб3КДЗ
+hidden:true
+
+
+
+[resource_48Н6]
+displayName:48Н6
+hidden:true
+
+[resource_40H6E]
+displayName:40H6E
+hidden:true
+
+[resource_57E6M]
+displayName:57E6M
+hidden:true
+
+[resource_TKB1055]
+displayName:TKB1055
+hidden:true
+
+
+[global_resource_fab3000umpk]
+displayName:FAB-3000UMPK
+hidden:true
+
+
+[resource_FPV]
+displayName:FPV
+hidden:true
+
+[resource_S-200]
+displayName:S-200
+hidden:true
+
+[resource_S200]
+displayName:S200
+hidden:true
+
+[resource_mavick3T]
+displayName:DJ-MAVIC 3T
+hidden:true
+
+#===БЧ ФПВ
+
+
+
+[resource_cub]
+displayName:cub
+hidden:true
+
+
+
+[resource_zala]
+displayName:ZALA 421-16
+hidden:true
+
+
+[resource_shark]
+displayName:UAV Shark
+hidden:true
+
+[resource_orlan]
+displayName:UAV Orlan
+hidden:true
+
+
+
+
+
+
+
+
+
+
+
+[resource_203HE]
+displayName: 203HE
+hidden: true

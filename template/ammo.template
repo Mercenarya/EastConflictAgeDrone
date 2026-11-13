@@ -1,0 +1,73 @@
+
+
+[graphics]
+turretImageScale:0.4
+showHealthBar:false
+
+[turret_01]
+x:0
+y:0
+image:ROOT:/PNG/bar_ammo10.png
+invisible:if not self.resource(type='ammo',greaterThan=90,lessThan=100.1)
+image_applyTeamColors:false
+canShoot:false
+idleDir:-90
+image_drawOffsetY:-70
+limitingRange: 0
+turnSpeed:0
+
+[turret_2]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo9.png
+invisible:if not self.resource(type='ammo',greaterThan=80,lessThan=90.1)
+
+[turret_3]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo8.png
+invisible:if not self.resource(type='ammo',greaterThan=70,lessThan=80.1)
+
+[turret_4]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo7.png
+invisible:if not self.resource(type='ammo',greaterThan=60,lessThan=70.1)
+
+[turret_5]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo6.png
+invisible:if not self.resource(type='ammo',greaterThan=50,lessThan=60.1)
+
+[turret_6]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo5.png
+invisible:if not self.resource(type='ammo',greaterThan=40,lessThan=50.1)
+
+[turret_7]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo4.png
+invisible:if not self.resource(type='ammo',greaterThan=30,lessThan=40.1)
+
+[turret_8]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo3.png
+invisible:if not self.resource(type='ammo',greaterThan=20,lessThan=30.1)
+
+[turret_9]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo2.png
+invisible:if not self.resource(type='ammo',greaterThan=10,lessThan=20.1)
+
+[turret_010]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo1.png
+invisible:if not self.resource(type='ammo',greaterThan=0,lessThan=10.1)
+
+[turret_011]
+@copyFromSection:turret_01
+image:ROOT:/PNG/bar_ammo0.png
+invisible:if not self.resource(type='ammo',lessThan=0.1)
+
+
+
+
+
+

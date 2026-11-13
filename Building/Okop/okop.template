@@ -1,0 +1,56 @@
+[core]
+autoTriggerCooldownTime:0.2s
+canNotBeDirectlyAttacked: true
+canNotBeDamaged:true
+whileNeutralConvertToTransportedTeam:true
+convertToNeutralIfNotTransporting:true
+whileNeutralTransportAnyTeam:true
+disableAllUnitCollisions:true
+selfBuildRate:0.01
+
+[attachment_right]
+x:20
+y:0
+onCreateSpawnUnitOf:right
+isVisible: false
+onParentTeamChangeKeepCurrentTeam:true
+[attachment_left]
+x:-20
+y:0
+onCreateSpawnUnitOf:left
+isVisible: false
+onParentTeamChangeKeepCurrentTeam:true
+[attachment_top]
+x:0
+y:20
+onCreateSpawnUnitOf:top
+isVisible: false
+onParentTeamChangeKeepCurrentTeam:true
+[attachment_bottom]
+x:0
+y:-20
+onCreateSpawnUnitOf:bottom
+isVisible: false
+onParentTeamChangeKeepCurrentTeam:true
+
+[attachment_human1]
+x:-3
+y:-3
+addTransportedUnits:true
+canAttack:true
+canBeAttackedAndDamaged:true
+keepAliveWhenParentDies:true
+isUnselectable:false
+deattachIfWantingToMove:true
+onParentTeamChangeKeepCurrentTeam:true
+
+[attachment_human2]
+x:3
+y:3
+addTransportedUnits:true
+canAttack:true
+canBeAttackedAndDamaged:true
+keepAliveWhenParentDies:true
+isUnselectable:false
+deattachIfWantingToMove:true
+onParentTeamChangeKeepCurrentTeam:true

@@ -1,0 +1,41 @@
+[core]
+@memory EZRD_targets: unit[]
+# Don't worry, wont be that heavy.
+
+[graphics]
+showQueueBar: false
+
+[hiddenAction_EZRD_revealEZRD_targets]
+autoTrigger: if (self.timeAlive() % ${EZRD_timeBetween}) < 0.9
+takeResources_maxUnits: 4000
+takeResources_discardCollected: true
+takeResources_keepResourcesOnTarget: true
+takeResources_includeUnitsWithinRange: ${EZRD_Range}
+takeResources_includeUnitsWithinRange_team: enemy
+takeResources_triggerActionForEach: EZRD_listEm
+takeResources_excludeUnitsWithoutTags: ${EZRD_Tag}
+alsoQueueAction: EZRD_revealList
+setUnitMemory: EZRD_targets=null
+setResourcesWithLogic: ammo=0
+
+[hiddenAction_EZRD_listEm]
+setUnitMemory: EZRD_targets[memory.EZRD_targets.size]=thisActionTarget
+
+[hiddenAction_EZRD_revealList]
+buildSpeed: 0.2
+alsoQueueAction: EZRD_revealList
+requireConditional: if self.ammo < memory.EZRD_targets.size
+alsoTriggerAction: EZRD_revealer
+alsoTriggerActionRepeat: max(1,int(memory.EZRD_targets.size/${(EZRD_timeBetween-0.5)*10}+0.99))
+
+[hiddenAction_EZRD_revealer]
+alsoTriggerAction: EZRD_revealerA, EZRD_revealerB
+requireConditional: if self.ammo < memory.EZRD_targets.size
+
+[hiddenAction_EZRD_revealerA]
+spawnUnits: ${EZRD_revealerUnit}(spawnSource=createMarker(memory.EZRD_targets[self.ammo].x,memory.EZRD_targets[self.ammo].y,teamId=self.teamId))
+requireConditional: if distance(self.x,self.y,memory.EZRD_targets[self.ammo].x,memory.EZRD_targets[self.ammo].y) > ${core.fogOfWarSightRange*20-30}
+
+
+[hiddenAction_EZRD_revealerB]
+addResources: ammo=1

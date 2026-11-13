@@ -1,0 +1,37 @@
+[core]
+mass: 0
+price: 0
+maxHp: 0
+radius: 0
+showOnMinimap: false
+isUnselectable: true
+canNotBeDirectlyAttacked: true
+disableDeathOnZeroHp: true
+disableAllUnitCollisions: true
+showInEditor: false
+ignoreInUnitCapCalculation: true
+fogOfWarSightRange: 0
+
+[graphics]
+drawLayer: underwater
+image: SHARED:blank.png
+disableLowHpFire: true
+disableLowHpSmoke: true
+showTransportBar: false
+showHealthBar: false
+showEnergyBar: false
+showShieldBar: false
+showQueueBar: false
+showShotDelayBar: false
+showSelectionIndicator: false
+
+
+[attack]
+canAttack: false
+
+[movement]
+movementType: none
+
+[hiddenAction_removeSelf]
+autoTrigger: if (self.timeAlive >= ${EZRD_aliveTime})
+deleteSelf: true

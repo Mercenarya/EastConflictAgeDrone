@@ -1,0 +1,31 @@
+
+[core]
+copyFrom:ROOT:/template/Moduls/tanks.template
+tags: fx
+class: CustomUnitMetadata
+isBio: true
+isBug: false
+#isUnrepairableUnit: true
+selfRegenRate: 0.01
+softCollisionOnAll: 3
+hideScorchMark: true
+
+
+
+[attachment_engine]
+x: 0
+y: -25
+onCreateSpawnUnitOf:tankEngine
+addTransportedUnits:true
+canBeAttackedAndDamaged: true
+#isUnselectable: true
+keepAliveWhenParentDies:false
+rotateWithParent:true
+
+
+
+
+
+
+
+

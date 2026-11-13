@@ -1,0 +1,222 @@
+
+[core]
+tags: fx,infantry
+class: CustomUnitMetadata
+isBio: true
+isBug: false
+isUnrepairableUnit: true
+selfRegenRate: 0
+softCollisionOnAll: 3
+hideScorchMark: true
+armourMinDamageToKeep:0
+maxHp:100
+
+
+shieldDisplayOnlyDeflection:true 
+#.Щит показывать только отраженние
+
+shieldDeflectionDisplayRate: 1000
+#.Скорость отражения (Что бы не видно было что это щит)
+
+[hiddenAction_tag]
+autoTriggerOnEvent: created
+temporarilyAddTags: infantry
+
+
+[hiddenAction_speed]
+autoTriggerOnEvent: created
+setUnitStats:moveSpeed=0.69,maxHp=100
+
+
+
+#=====мэдик
+
+
+[hiddenAction_medik_radom] 
+autoTrigger: if self.numberOfUnitsInTeam(withTag='medik', greaterThan=0, withinRange=20 ) and not self.isAttacking() and not self.isMoving()
+setUnitStats:selfRegenRate=0.1
+
+
+
+#==стоп атако
+
+
+[hiddenAction_stop]
+autoTrigger:if self.isAttacking()
+clearAllWaypoints:true
+
+#==окопы
+
+
+
+[hiddenAction_defend1]
+autoTrigger:if self.numberOfUnitsInTeam(withTag='okopdefend',withinRange=5,greaterThan=0)
+setUnitStats: maxShield = 10, shield=10
+
+
+
+[hiddenAction_coverout]
+autoTrigger: if not numberOfUnitsInTeam(withTag='okopdefend',withinRange=5,greaterThan=0)  
+resetUnitStats:true
+
+
+#== стрельба
+
+
+
+
+[resource_armour]
+displayName: armour
+displayColor:#6C408CFF
+hidden:true
+
+[action_Grenade]
+fireTurretXAtGround:AP
+isLocked:if not self.customTimer(laterThanSeconds=20)
+text: Throw grenade 
+text_ru: Бросить гранату
+description: - [Reload 20s]
+description_ru: - [Перезарядка 20с]
+displayType: action
+buildSpeed: 0.7s
+pos: 0.1
+#iconImage: P.png
+price:200
+resetCustomTimer:true
+
+
+[turret_AP]
+x: 0
+y: 0
+projectile: APphase
+size:1
+turnSpeedAcceleration: 0.5
+canShoot: false
+recoilOffset: 0
+image:ROOT:/PNG/Infantry/null.png
+limitingRange:100
+
+[projectile_APphase]
+tags:HE
+image:ROOT:/PNG/Infantry/rgd.png
+drawSize: 0.7
+directDamage: 1
+speed: 1.7
+life: 100
+targetGround: true
+initialUnguidedSpeedHeight: 0.78
+lightCastOnGround: true
+spawnProjectilesOnExplode:AP
+explodeEffect:none
+
+[projectile_AP]
+tags:HE
+image:ROOT:/PNG/Infantry/rgd.png
+drawSize: 0.7
+directDamage: 1
+areaDamage: 80
+areaRadius: 32
+life: 150
+speed:0.01
+targetGround: true
+targetGroundSpread: 100
+areaHitAirAndLandAtSameTime: true
+
+friendlyFire: true
+explodeEffect:CUSTOM:sparks*4,CUSTOM:projectileCraterSmall,shockwave
+explodeOnEndOfLife:true
+buildingDamageMultiplier: 4
+lightCastOnGround: true
+
+
+[effect_projectileCraterSmall]
+priority:critical
+
+image:ROOT:/PNG/crater_small.png
+createWhenOverLiquid: false
+life: 2000
+fadeOut: true
+scaleFrom: 0.7
+scaleTo: 0.7
+alpha: 1.5
+drawUnderUnits:true
+dirOffsetRandom:180
+alsoPlaySound:ROOT:/ogg/amer/small_explode.ogg
+
+[effect_sparks]
+attachedToUnit: false
+life: 150
+scaleFrom:1
+scaleTo: 3
+physics: true
+xSpeedRelativeRandom: 0.6
+ySpeedRelativeRandom: 0.6
+hSpeed: 1
+image:ROOT:/PNG/spark.png
+priority: low
+
+
+
+
+[hiddenAction_start1488]
+autoTriggerOnEvent: created
+addResources:setFlag=1
+
+[action_shellReloa1d]
+text: Safe >
+text_ru: ОДИНОЧНЫЙ
+isVisible: if self.hasFlag(id=2) and not self.hasFlag(id=1) 
+addResources: setFlag=1, unsetFlag=2
+buildSpeed:0s
+
+[action_sh1ellReload]
+text: auto fire >
+text_ru: ПРЕДОХРАНИТЕЛЬ
+isVisible: if self.hasFlag(id=1) and not self.hasFlag(id=2) 
+addResources: setFlag=2, unsetFlag=1
+buildSpeed:0s
+
+
+
+
+[turret_shoot]
+x:0
+y:-2
+projectile:1
+invisible: true
+warmup: 5
+idleDir: 0
+canAttackCondition: if self.hasFlag(id=2) and not self.hasFlag(id=1)
+
+shoot_sound:ROOT:/ogg/rf/rpg7.OGG
+shoot_sound_vol:0.75
+
+#shoot_flame:CUSTOM:glow,CUSTOM:glow
+shoot_light:#ffff4900
+recoilOffset: 0
+energyUsage: 50
+resourceUsage: 7.62LPS=1
+canAttackCondition: if self.hasFlag(id=1)
+
+
+
+[action_ammo1]
+isLocked:true
+isVisible:if self.resource(type='7.62LPS',greaterThan=0) and self.hasFlag(id=2) and not self.hasFlag(id=1)
+
+#isActive: false
+text: PG-7VL
+text_ru: ПГ-7ВЛ
+description: -
+description_ru: Кол-во БК
+iconImage:ROOT:/PNG/Ammunition.png
+addResources: 7.62LPS=1
+price:  7.62LPS=1
+
+buildSpeed: 0s
+pos: 0.2
+displayRemainingStockpile: true
+displayType: infoOnlyStockpile
+
+
+

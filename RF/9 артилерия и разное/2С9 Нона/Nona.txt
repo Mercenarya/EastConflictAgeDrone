@@ -1,0 +1,308 @@
+
+[core]
+copyFrom:ROOT:/template/Fuel/Medium.template,ROOT:/template/weapons/Cannons/Cannons.fx,ROOT:/template/weapons/MG/MG.fx
+name: Nona
+tags: armor,noarmor
+
+#overrideAndReplace: heavyTank
+
+class: CustomUnitMetadata
+price: 8400
+maxHp: 300
+mass: 3000
+armour:42
+armourMinDamageToKeep:0
+displayText: 2S9 Nona SVK
+displayText_ru: 2С9 Нона
+displayDescription: (ACV)\Armed with a 120mm mortar.
+displayDescription_ru: Самоходный миномет \n Вооружен 120мм минометом
+fogOfWarSightRange: 7
+techLevel: 2
+buildSpeed:15s
+#availableInDemo: true
+transportSlotsNeeded: 52
+maxTransportingUnits: 0
+
+radius: 25
+displayRadius: 32
+
+
+isBio: false
+softCollisionOnAll: 0
+#soundOnMoveOrder:ROOT:/ogg/rf/bmd.OGG
+
+energyMax: 350
+energyRegen: 0.8
+energyNeedsToRechargeToFull: true
+
+
+
+[graphics]
+total_frames: 1
+icon_zoomed_out:ROOT:/PNG/Icons/icon_7.png
+image:        Nona.png
+image_wreak:  Nona.png
+image_turret: Nona_T.png
+
+scaleImagesTo: 30
+scaleTurretImagesTo: 30
+
+
+image_shadow: AUTO
+shadowOffsetX:1
+shadowOffsetY:1
+dustEffect: true
+animation_moving_start: 0
+animation_moving_end: 1
+animation_moving_speed: 0
+
+
+splastEffect: true
+[attack]
+canAttack: true
+canAttackFlyingUnits: true
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+
+
+
+turretSize: 30
+turretTurnSpeed: 1.6
+
+maxAttackRange: 900
+shootDelay: 15
+
+turretMultiTargeting: true
+
+[turret_pkm]
+#pkm
+x: -2
+y: 0
+attachedTo: 2
+slave:true
+canShoot: true
+image: none
+resourceUsage: 7.62LPS=1
+invisible:true
+shoot_sound: ROOT:/ogg/rf/PKM.OGG
+shoot_sound_vol: 0.3
+shoot_flame: NONE
+shoot_light:#FFEECCCC
+delay:6
+canAttackLandUnits:   true
+canAttackFlyingUnits: false
+
+projectile:pkm
+limitingRange:280
+
+
+
+[turret_2]
+#2А72
+x: 0
+y: 2
+canShoot:false
+
+
+[turret_1]
+#"barrel"
+x: 0
+y: 7
+energyUsage:350
+canShoot: true
+shoot_sound: ROOT:/ogg/amer/Mortar.OGG 
+shoot_sound_vol: 0.2
+shoot_flame:CUSTOM:Flame,CUSTOM:porohgaz*2,CUSTOM:porohgaz1*4
+shoot_light:#FFEECCCC
+warmup: 1s
+resourceUsage: 120nonaHE=1
+canAttackCondition: if self.hasFlag(id=1)
+invisible:false
+
+projectile:3OF49
+delay:10s
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+attachedTo:2
+slave:true
+limitingRange:780
+image: 120_gun.png
+
+
+[effect_Flame]
+life:50
+image:ROOT:/PNG/shoot_flame.png
+total_frames:5
+animateFrameSpeed:0.5
+attachedToUnit:true
+animateFrameStart:0
+animateFrameEnd:4
+yOffsetRelative: 4
+
+[effect_porohgaz]
+life:95
+image:ROOT:/PNG/porohgaz.png
+
+attachedToUnit:false
+
+xOffsetRelativeRandom:7
+yOffsetRelative: 2
+xOffsetAbsoluteRandom:9
+yOffsetAbsolute:6
+
+ySpeedRelative:-0.3
+xSpeedRelativeRandom:0.35
+dirOffsetRandom:360
+dirSpeed:0.2
+
+atmospheric:true
+scaleTo:0.4
+scaleFrom:0.8
+
+[effect_porohgaz1]
+life:95
+image:ROOT:/PNG/porohgaz1.png
+
+attachedToUnit:false
+
+xOffsetRelativeRandom:6
+yOffsetRelative: 2
+xOffsetAbsoluteRandom:8
+yOffsetAbsolute:7
+
+ySpeedRelative:-0.3
+xSpeedRelativeRandom:0.35
+dirOffsetRandom:360
+dirSpeed:0.2
+
+atmospheric:true
+scaleTo:0.4
+scaleFrom:0.8
+
+[turret_3]
+#пушка
+x: 0
+y: 7
+canAttackCondition: if self.hasFlag(id=2)
+resourceUsage: 120nonaHEI=1
+projectile: 3OF50
+copyFrom: 1
+limitingRange:900
+invisible:false
+
+
+
+
+
+
+[action_shellReload]
+text: Reload
+text_ru: Сменить тип боеприпасов
+isVisible: if self.hasFlag(id=2) and not self.hasFlag(id=4)
+addResources: setFlag=1, unsetFlag=2
+
+[action_shellReload2]
+text: Reload
+text_ru: Сменить тип боеприпасов
+isVisible: if self.hasFlag(id=1) and not self.hasFlag(id=4)
+addResources: setFlag=2, unsetFlag=1
+
+
+
+[action_shell]
+isVisible: if self.hasFlag(id=1) and not self.hasFlag(id=4)
+text: HE
+text_ru: ОФ
+description: Anti-personel(full)
+description_ru: Против пехоты(Полный)
+buildSpeed: 0
+iconImage:ROOT:/PNG/120nona_HE_shell.png
+
+[action_shell2]
+isVisible: if self.hasFlag(id=2) and not self.hasFlag(id=4)
+text: HE
+text_ru: ОФ
+description: Anti-personel
+description_ru: Против пехоты(Средний)
+buildSpeed: 0
+iconImage:ROOT:/PNG/120nona_HEI_shell.png
+
+
+[hiddenAction_start]
+autoTriggerOnEvent: created
+addResources:120nonaHE=10,120nonaHEI=15,7.62LPS=1000,setFlag=1,fuel=90
+
+
+[hiddenAction_ammoReload]
+autoTrigger: if  numberOfUnitsInTeam(withTag='Ammo',withinRange=100,greaterThan=0) and self.queueSize(lessThan=1)
+alsoQueueAction:LoadBK
+
+[hiddenAction_LoadBK]
+buildSpeed: 5s
+addResources:120nonaHE=1,120nonaHEI=1,7.62LPS=100
+
+
+
+
+
+[movement]
+movementType: HOVER
+moveSpeed: 1.3
+moveAccelerationSpeed: 0.05
+moveDecelerationSpeed: 0.15
+
+maxTurnSpeed: 1.2
+turnAcceleration: 0.50
+
+moveSlidingMode :false
+moveIgnoringBody:false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

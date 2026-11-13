@@ -1,0 +1,122 @@
+
+[core]
+maxTransportingUnits:1
+tags: fx
+class: CustomUnitMetadata
+transportUnitsRequireTag:TANKIST
+isBio: true
+isBug: false
+#isUnrepairableUnit: true
+selfRegenRate: 0
+softCollisionOnAll: 3
+hideScorchMark: true
+stayNeutral:true
+transportUnitsKillOnDeath:false
+whileNeutralTransportAnyTeam:true
+whileNeutralConvertToTransportedTeam:true
+transportUnitsCanUnloadUnits:if not self.isControlledByAi()
+
+
+[action_NotTurn]
+autoTrigger: if self.numberOfAttachedUnits(withTag='engine',lessThan=1)
+
+setUnitStats:maxTurnSpeed=0
+isVisible:false
+
+[action_turn]
+autoTrigger: if self.numberOfAttachedUnits(withTag='engine',greaterThan=0)
+setUnitStats: maxTurnSpeed=${movement.maxTurnSpeed}
+isVisible:false
+
+[action_NotSpeed]
+autoTrigger: if self.numberOfAttachedUnits(withTag='engine',lessThan=1)
+setUnitStats:moveSpeed=0
+isVisible:false
+
+[action_speed]
+autoTrigger: if self.numberOfAttachedUnits(withTag='engine',greaterThan=0)
+setUnitStats: moveSpeed=${movement.moveSpeed}
+isVisible:false
+
+[action_NotSpeed]
+autoTrigger: if self.numberOfAttachedUnits(withTag='engine',lessThan=1)
+setUnitStats:moveSpeed=0
+isVisible:false
+
+
+[hiddenAction_vehicleEmpty]
+autoTrigger:if self.transportingCount() == 0
+clearActiveWaypoint:true
+switchToNeutralTeam:true
+
+[hiddenAction_ii]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount() >= 1
+startUnloadingTransport:true
+
+
+[hiddenAction_crewKilled25]
+autoTrigger:if self.hasTakenDamage(withinSeconds=1) and (self.hp() <= (self.maxHp())/1.75)  and (self.hp() >= (self.maxHp())/4) and (rnd(0,1) > 0.75)
+deleteNumUnitsFromTransport:1
+
+[hiddenAction_crewKilled50]
+autoTrigger:if self.hasTakenDamage(withinSeconds=1) and (self.hp() < (self.maxHp())/4) and (rnd(0,1) > 0.5)
+deleteNumUnitsFromTransport:2
+
+
+
+
+[attack]
+canAttack: true
+canAttackLandUnits: if self.transportingCount(greaterThan=1)
+
+[attachment_engine]
+x: 0
+y: -25
+onCreateSpawnUnitOf:tankEngine
+addTransportedUnits:true
+canBeAttackedAndDamaged: true
+isUnselectable: false
+keepAliveWhenParentDies:false
+rotateWithParent:true
+
+
+
+[turret_radar69]
+#None
+delay:3s
+x: 0
+y: 0
+canShoot:true
+projectile: zasvet69
+invisible:true
+
+[projectile_zasvet69]
+directDamage: 0
+life: 100
+frame: 4
+speed: 100
+drawSize: 0.001
+spawnUnit: ZasvetTeplovisor*1
+explodeEffect:none
+
+[hiddenAction_crewKilled11111]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount(lessThan=0)
+deleteNumUnitsFromTransport:3
+
+[hiddenAction_crewKilled111111]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount(lessThan=1)
+deleteNumUnitsFromTransport:2
+
+[hiddenAction_crewKilled11111111]
+autoTrigger:if self.isOnNeutralTeam() and self.transportingCount(lessThan=2)
+deleteNumUnitsFromTransport:1
+
+
+
+
+
+
+
+
+
+

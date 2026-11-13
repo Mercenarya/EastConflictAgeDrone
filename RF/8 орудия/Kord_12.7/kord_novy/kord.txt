@@ -1,0 +1,219 @@
+
+[core]
+name: SKord
+#overrideAndReplace
+displayText: "Кord"
+displayText_ru: Корд
+displayDescription: 12.7mm heavy machine gun 
+displayDescription_ru: 12.7мм крупнокалиберный пулемет
+class: CustomUnitMetadata
+price: 270,Ammo=250
+maxHp: 100
+armour:0
+armourMinDamageToKeep:0
+mass: 30000
+
+techLevel: 1
+buildSpeed: 2s
+transportSlotsNeeded:2
+radius: 8
+#displayRadius: 20
+isBuilding: false
+fogOfWarSightRange: 8
+[graphics]
+total_frames: 15
+
+scaleImagesTo: 9
+scaleTurretImagesTo: 8
+
+image:        1.png
+image_wreak:  null.png
+image_turret: null.png
+teamColorsOnTurret: true
+
+
+
+image_shadow: AUTO
+shadowOffsetX:1
+shadowOffsetY:1
+
+
+
+
+[attack]
+canAttack: true
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+
+turretSize: 11
+turretTurnSpeed: 1.2
+
+
+maxAttackRange: 340
+shootDelay: 7
+turretRotateWithBody:true
+isFixedFiring: true
+
+[turret_1]
+#Корд
+x: 1
+y: -4
+
+canShoot: true
+resourceUsage: 12.7RF=1
+shoot_sound: ROOT:/ogg/rf/KORD.OGG
+shoot_sound_vol: 0.4
+shoot_flame:CUSTOM:Flame
+shoot_light:#FFEECCCC
+
+
+delay:13
+canAttackLandUnits:   true
+canAttackFlyingUnits: false
+projectile:kord
+
+
+
+
+
+[projectile_kord]
+directDamage: 50
+life: 100
+speed: 8
+image: ROOT:/PNG/Tracer_R.png
+drawSize: 0.7
+largeHitEffect: true
+targetGround:true
+targetGroundSpread: 4.5
+areaRadius: 4
+areaDamage:50
+
+
+explodeEffect:CUSTOM:lostShot
+
+[effect_lostShot]
+spawnChance:0.4
+attachedToUnit: false
+life: 60
+ySpeedRelative: 6
+image: ROOT:/PNG/Tracer_R.png
+scaleFrom:0.3
+scaleTo: 0.1
+priority: low
+
+
+
+
+[hiddenAction_start]
+autoTriggerOnEvent: created
+addResources: 12.7RF=1200
+
+
+[hiddenAction_ammoReload]
+autoTrigger: if  numberOfUnitsInTeam(withTag='Ammo',withinRange=100,greaterThan=0) and self.queueSize(lessThan=1)
+alsoQueueAction:LoadBK
+
+[hiddenAction_LoadBK]
+buildSpeed: 5s
+addResources:12.7RF=100
+
+
+
+[movement]
+movementType: LAND
+moveSpeed: 0
+moveAccelerationSpeed: 0
+moveDecelerationSpeed: 0
+
+
+maxTurnSpeed: 0.6
+turnAcceleration: 0
+
+moveSlidingMode :false
+moveIgnoringBody:false
+
+
+
+[ai]
+
+
+buildPriority: 0.22
+noneInBaseExtraPriority: 0.17
+
+maxEachBase: 3
+
+
+[effect_Flame]
+life:50
+image:ROOT:/PNG/shoot_flame.png
+total_frames:5
+animateFrameSpeed:0.5
+attachedToUnit:true
+animateFrameStart:0
+animateFrameEnd:4
+yOffsetRelative: 4
+scaleTo:0.2
+scaleFrom:0.2
+
+
+[effect_porohgaz]
+life:95
+image:ROOT:/PNG/porohgaz.png
+
+attachedToUnit:false
+
+xOffsetRelativeRandom:7
+yOffsetRelative: 2
+xOffsetAbsoluteRandom:9
+yOffsetAbsolute:6
+
+ySpeedRelative:-0.3
+xSpeedRelativeRandom:0.35
+dirOffsetRandom:360
+dirSpeed:0.2
+
+atmospheric:true
+scaleTo:0.4
+scaleFrom:0.8
+
+[effect_porohgaz1]
+life:95
+image:ROOT:/PNG/porohgaz1.png
+
+attachedToUnit:false
+
+xOffsetRelativeRandom:6
+yOffsetRelative: 2
+xOffsetAbsoluteRandom:8
+yOffsetAbsolute:7
+
+ySpeedRelative:-0.3
+xSpeedRelativeRandom:0.35
+dirOffsetRandom:360
+dirSpeed:0.2
+
+atmospheric:true
+scaleTo:0.4
+scaleFrom:0.8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

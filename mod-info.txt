@@ -1,0 +1,18 @@
+[mod]
+title: East Conflict Mod (5.2) RELIZ
+minVersion: 1.15p19
+tags:WW3,PMC,WAGNER,Ukraine,Russia,ZVO
+
+thumbnail: xoxolsosi.png
+
+
+
+
+
+
+
+
+
+
+
+
